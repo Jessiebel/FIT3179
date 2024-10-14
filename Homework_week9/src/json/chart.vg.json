@@ -21,7 +21,11 @@
       },
       {"calculate": "datum.Total_2023 + 0.1", "as": "Total"} 
     ],
-    "mark": {"type": "geoshape"},
+    "mark": {
+      "type": "geoshape",
+      "stroke": "black",    
+      "strokeWidth": 0.5     
+    },
     "encoding": {
       "color": {
         "field": "Total", 
@@ -31,12 +35,11 @@
           "range": ["#f0f0f0", "#ffcc80", "#ffb74d", "#ffa726", "#fb8c00", "#ef6c00"]
         },
         "legend": {
-          "title": "Total Arrivals (2023)",
+          "title": "Total Arrivals",
           "tickCount": 6,
-          "labelFormat": ",.0f",
           "titleFontSize": 14,
           "labelFontSize": 12,
-          "orient": "right" 
+          "orient": "right"
         }
       },
       "tooltip": [
