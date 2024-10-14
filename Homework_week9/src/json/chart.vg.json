@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "COVID-19 Active Cases (10 Oct 2020)",
+    "title": "Incoming travelers by home country",
     "width": 800,
     "height": 400,
     "projection": {"type": "equalEarth"},
@@ -13,24 +13,36 @@
         "lookup": "properties.NAME",
         "from": {
           "data": {
-            "url": "C:/Users/jessi/FIT3179/FIT3179/Homework_week9/data/Arrivals.csv"
+            "url": "https://raw.githubusercontent.com/Jessiebel/FIT3179/refs/heads/main/Homework_week9/data/Arrivals.csv"
           },
           "key": "Country",
           "fields": ["Total_2023"]
         }
       },
-      {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
+      {"calculate": "datum.Total_2023 + 0.1", "as": "Total"} 
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
       "color": {
-        "field": "Active Cases",
+        "field": "Total", 
         "type": "quantitative",
-        "scale": {"type": "log"}
+        "scale": {
+          "domain": [0, 100, 1000, 10000, 100000, 1000000, 10000000],
+          "range": ["#f0f0f0", "#ffcc80", "#ffb74d", "#ffa726", "#fb8c00", "#ef6c00"]
+        },
+        "legend": {
+          "title": "Total Arrivals (2023)",
+          "tickCount": 6,
+          "labelFormat": ",.0f",
+          "titleFontSize": 14,
+          "labelFontSize": 12,
+          "orient": "right" 
+        }
       },
       "tooltip": [
         {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-        {"field": "Active", "type": "quantitative"}
+        {"field": "Total_2023", "type": "quantitative", "title": "Total Arrivals"}
       ]
     }
   }
+  
